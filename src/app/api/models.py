@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class ImagesSchema(BaseModel):
@@ -12,8 +12,8 @@ class ImagesDB(ImagesSchema):
 
 
 class NoteSchema(BaseModel):
-    title: str
-    description: str
+    title: str = Field(..., min_length=3, max_length=50)
+    description: str = Field(..., min_length=3, max_length=50)
 
 
 class NoteDB(NoteSchema):
